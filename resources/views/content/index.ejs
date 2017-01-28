@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>
+    <%= pageTitle %>
+  </title>
+
+  <link href='https://fonts.googleapis.com/css?family=Asap:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <% if (nodeEnv === 'production' || nodeEnv === 'development') { %>
+    <link rel="stylesheet" href=<%= manifestCss %> />
+  <% } %>
+</head>
+<body>
+  <div id="react-test"></div>
+
+<% if (nodeEnv === 'production' || nodeEnv === 'development') { %>
+  <script type="text/javascript" src=<%= manifestVendor %> />></script>
+  <script type="text/javascript" src=<%= manifestApp %> />></script>
+<% } else { %>
+  <script type="text/javascript" src="/assets/js/vendor.js"></script>
+  <script type="text/javascript" src="/assets/js/index.js"></script>
+<% } %>
+</body>
+</html>
+
