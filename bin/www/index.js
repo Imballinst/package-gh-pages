@@ -18,7 +18,7 @@ if (isProd) {
 app.get('/', function (req, res) {
   // handle every missing route on react-router
   res.render('index', {
-    pageTitle: 'React Bootstrap Datatable',
+    pageTitle: 'Sample Title',
     nodeEnv: process.env.NODE_ENV,
     manifestCss: isProd ? './assets/' + manifest['index.css'] : './assets/index.css',
     manifestApp: isProd ? './assets/' + manifest['index.js'] : './assets/index.js',
