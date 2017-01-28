@@ -65,7 +65,7 @@ const loaders = [
   {
     test: /\.(woff2?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
     loader: isProd ? "file-loader?publicPath=../&name=fonts/[name].[ext]" :
-                     "file-loader?name=/fonts/[name].[ext]"
+                     "file-loader?publicPath=/assets/&name=fonts/[name].[ext]"
   },
   {
     test: /.*\.(gif|png|jpe?g)$/i,

@@ -2,3 +2,4 @@ node_modules/
 .gulp-scss-cache/
 .env
 npm-debug.log
+public/
