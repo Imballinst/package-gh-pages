@@ -1,11 +1,7 @@
 "use strict";
 
-// Environment settings
-require('dotenv').config();
-
 // Import modules
 const express = require('express');
-const ejs = require('ejs');
 
 // Instantiate imported modules
 const app = express();
@@ -13,9 +9,11 @@ const app = express();
 // Middlewares
 app.use(express.static('public'));
 
+// Error handlers
+
 // Set templating engine
 app.set('view engine', 'ejs');
-app.set('views', './resources/views/content');
+app.set('views', './views/content');
 
 // Export app
 module.exports = app;

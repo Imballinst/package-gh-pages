@@ -1,28 +1,36 @@
 "use strict";
 
+// Environment settings
+require('dotenv').config();
+
 // Import modules
 const fs = require('fs');
-const app = require('../../app/app.js');
-
-// Socket io
 const http = require('http');
+
+const app = require('../app');
+
+// Server
 const server = http.Server(app);
 
 // Read manifest
-const isProd = (process.env.NODE_ENV !== 'local');
-if (isProd) {
-  const manifest = JSON.parse(fs.readFileSync('./public/assets/manifest.json', 'utf8'));
+let manifest;
+try {
+  const file = fs.readFileSync('./public/assets/manifest.json', 'utf8');
+  manifest = JSON.parse(file);
+} catch (err) {
+  if (err.code === 'ENOENT') {
+    manifest = {};
+  }
 }
 
 // Routes
 app.get('/', function (req, res) {
-  // handle every missing route on react-router
   res.render('index', {
     pageTitle: 'Sample App',
     nodeEnv: process.env.NODE_ENV,
-    manifestCss: isProd ? './assets/' + manifest['index.css'] : './assets/index.css',
-    manifestApp: isProd ? './assets/' + manifest['index.js'] : './assets/index.js',
-    manifestVendor: isProd ? './assets/' + manifest['vendor.js'] : './assets/vendor.js'
+    manifestCss: '/assets/' + manifest['index.css'],
+    manifestApp: '/assets/' + manifest['index.js'],
+    manifestVendor: '/assets/' + manifest['vendor.js']
   });
 });
 
