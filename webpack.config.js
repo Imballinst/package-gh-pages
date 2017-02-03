@@ -17,9 +17,11 @@ const isProd = nodeEnv === 'production';
 const resourcePath = path.join(__dirname, './resources/assets');
 const buildPath = path.join(__dirname, './public');
 
-del([buildPath + '/assets/css/*', buildPath + '/assets/js/*', buildPath + '/index.html']).then(paths => {
-  console.log('Deleted files and folders:\n', paths.join('\n'));
-});
+if (!process.env.ANALYZE) {
+  del([buildPath + '/assets/css/*', buildPath + '/assets/js/*', buildPath + '/index.html']).then(paths => {
+    console.log('Deleted files and folders:\n', paths.join('\n'));
+  });
+}
 
 // Common plugins
 const plugins = [
