@@ -110,7 +110,7 @@ if (isProd) {
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      title: 'React Bootstrap Datatable',
+      title: 'This is your page title',
       filename: '../index.html',
       inject: true,
       template: '../views/content/index-prod.ejs'

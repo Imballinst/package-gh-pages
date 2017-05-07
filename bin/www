@@ -26,7 +26,7 @@ try {
 // Routes
 app.get('/', function (req, res) {
   res.render('index', {
-    pageTitle: 'Sample App',
+    pageTitle: 'This is your page title',
     nodeEnv: process.env.NODE_ENV,
     manifestCss: '/assets/' + manifest['index.css'],
     manifestApp: '/assets/' + manifest['index.js'],
